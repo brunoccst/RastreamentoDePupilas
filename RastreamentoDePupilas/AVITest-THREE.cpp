@@ -24,6 +24,7 @@ using namespace std;
 #include "AVIClass.h"
 
 int cinza = false;
+bool watchAll;
 
 AVIClass Video;
 
@@ -49,6 +50,17 @@ cout << "Init..." ;
 
 cout << "Fim." << endl;
 
+}
+
+void achaPreto(AVIClass V){
+    int x, y, x1, y1;
+    for(x=0; x<V.SizeX(); x++){
+        for(y=0; y<V.SizeY(); y++){
+            if(V.GetPointIntensity(x, y) < 20){
+                V.DrawPixel(x, y, 255, 0, 0);
+            }
+        }
+    }
 }
 
 // **********************************************************************
@@ -135,6 +147,7 @@ void display( void )
     // se atingiu o final do vídeo, então recomeça
     if (frame == Video.getTotalFrames())
     {
+        cout << "Ver todo o video: " << watchAll << endl;
          frame = 0;
         // getchar();
          return;
@@ -148,6 +161,7 @@ void display( void )
        CalculaNivelDeZoom(ZoomH, ZoomV);
        Video.SetZoomH(ZoomH);
        Video.SetZoomV(ZoomV);
+       achaPreto(Video);
        if (cinza)
        {
           ConverteCinza(Video);
@@ -157,6 +171,9 @@ void display( void )
     else cout << "Erro..." << endl;
 
     glutSwapBuffers();
+    if(watchAll == true){
+        display();
+    }
 }
 
 
@@ -173,10 +190,16 @@ void keyboard ( unsigned char key, int x, int y )
         case 'c': cinza = !cinza;
                   glutPostRedisplay();
                   break;
-
+        case 'w':
+                    if(watchAll == true){
+                        watchAll = false;
+                    }else{
+                        watchAll = true;
+                    }
+                    break;
         case ' ':
-                   glutPostRedisplay();
-                   break;
+                    glutPostRedisplay();
+                    break;
         case 27: // Termina o programa qdo
              Video.closeVideoFile();
         exit ( 0 );   // a tecla ESC for pressionada
