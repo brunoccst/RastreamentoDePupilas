@@ -40,7 +40,7 @@ cout << "Init..." ;
 
     imFormatRegisterAVI();
     //imFormatRegisterWMV();
-    if(Video.openVideoFile("Videos\\VideoDemo.avi") == 0)
+    if(Video.openVideoFile("Videos\\1.avi") == 0)
     //if(Video.openVideoFile("Videos\\video_original.avi") == 0)
     {
        cout << "Problemas na abertura do video" << endl;
@@ -52,13 +52,55 @@ cout << "Fim." << endl;
 
 }
 
-void achaPreto(AVIClass V){
+// NOSSOS MÉTODOS
+
+
+void OrdenaVetor(unsigned char window[])
+{
+    int temp, i , j;
+    for(i = 0; i < 9; i++)
+    {
+        temp = window[i];
+        for(j = i-1; j >= 0 && temp < window[j]; j--)
+        {
+            window[j+1] = window[j];
+        }
+        window[j+1] = temp;
+    }
+}
+
+void aplicaFiltro(AVIClass V){
     int x, y, x1, y1;
+    unsigned char r,g,b;
     for(x=0; x<V.SizeX(); x++){
         for(y=0; y<V.SizeY(); y++){
-            if(V.GetPointIntensity(x, y) < 20){
+            V.ReadPixel(x,y,r,g,b);
+            if(V.GetPointIntensity(x, y) < 34){
                 V.DrawPixel(x, y, 255, 0, 0);
             }
+        }
+    }
+}
+
+
+void Mediana()
+{
+    int mediana;
+    int cont;
+    unsigned char r[9], g[9], b[9];
+    for(int y = 0; y < Video.SizeY(); y++){
+        for(int x = 0; x < Video.SizeX(); x++){
+            cont = 0;
+            for(int i = 0; i<3; i++){
+                for(int j = 0; j<3; j++){
+                    Video.ReadPixel(x+j, y+i, r[cont], g[cont], b[cont]);
+                    cont++;
+                }
+            }
+            OrdenaVetor(r);
+            OrdenaVetor(g);
+            OrdenaVetor(b);
+            Video.DrawPixel(x, y, r[4], g[4], b[4]);
         }
     }
 }
@@ -142,6 +184,7 @@ void display( void )
 
     loadFrameOK = Video.loadImageFrame(frame);
     // avança o nro do frame
+
     frame ++;
     cout << "Frame: " << frame << endl;
     // se atingiu o final do vídeo, então recomeça
@@ -161,7 +204,8 @@ void display( void )
        CalculaNivelDeZoom(ZoomH, ZoomV);
        Video.SetZoomH(ZoomH);
        Video.SetZoomV(ZoomV);
-       achaPreto(Video);
+       Mediana();
+       aplicaFiltro(Video);
        if (cinza)
        {
           ConverteCinza(Video);
@@ -187,26 +231,20 @@ void keyboard ( unsigned char key, int x, int y )
 
     switch ( key )
     {
-        case 'c': cinza = !cinza;
-                  glutPostRedisplay();
-                  break;
-        case 'w':
-                    if(watchAll == true){
-                        watchAll = false;
-                    }else{
-                        watchAll = true;
-                    }
+        case 'c':   cinza = !cinza;
+                    break;
+        case 'w':   watchAll = !watchAll;
                     break;
         case ' ':
-                    glutPostRedisplay();
                     break;
         case 27: // Termina o programa qdo
-             Video.closeVideoFile();
-        exit ( 0 );   // a tecla ESC for pressionada
-        break;
+                    Video.closeVideoFile();
+                    exit ( 0 );   // a tecla ESC for pressionada
+                    break;
         default:
-        break;
+                    break;
     }
+    glutPostRedisplay();
 }
 
 // **********************************************************************
