@@ -27,6 +27,7 @@ int cinza = false;
 bool watchAll;
 
 AVIClass Video;
+AVIClass Video2;
 
 // **********************************************************************
 //  void init(void)
@@ -40,7 +41,7 @@ cout << "Init..." ;
 
     imFormatRegisterAVI();
     //imFormatRegisterWMV();
-    if(Video.openVideoFile("Videos\\1.avi") == 0)
+    if(Video.openVideoFile("videos_professor\\1.avi") == 0)
     //if(Video.openVideoFile("Videos\\video_original.avi") == 0)
     {
        cout << "Problemas na abertura do video" << endl;
@@ -53,7 +54,6 @@ cout << "Fim." << endl;
 }
 
 // NOSSOS MÉTODOS
-
 
 void OrdenaVetor(unsigned char window[])
 {
@@ -105,6 +105,41 @@ void Mediana()
     }
 }
 
+void RemoveIguais(ImageClass *Img){
+    int x,y;
+    int i, j;
+    unsigned char r,g,b;
+
+    for(x=0;x<Video.SizeX();x++)
+    {
+        for(y=0;y<Video.SizeY();y++)
+        {
+            i = Video.GetPointIntensity(x,y);
+            j = Img->GetPointIntensity(x, y);
+
+            if (i != j)
+            {
+                Video.DrawPixel(x, y, 255, 255, 255);
+            }
+        }
+    }
+}
+
+
+void atualizaAnterior(){
+    int x,y;
+    unsigned char r,g,b;
+    for(x=0;x<Video.SizeX();x++)
+    {
+        for(y=0;y<Video.SizeY();y++)
+        {
+            Video.ReadPixel(x,y,r,g,b);
+            Video2.DrawPixel(x,y,r,g,b);
+        }
+    }
+}
+
+
 // **********************************************************************
 //  void reshape( int w, int h )
 //  trata o redimensionamento da janela OpenGL
@@ -134,7 +169,7 @@ void ConverteCinza(AVIClass V)
 {
 
     int x,y;
-    int i;
+    int i, j;
     unsigned char r,g,b;
     //cout << "Iniciou Black & White....";
     //NovaImagem->DrawPixel(20, 1,100,255,0,0 );
@@ -145,12 +180,78 @@ void ConverteCinza(AVIClass V)
         {
             i = V.GetPointIntensity(x,y);
             //Img->ReadPixel(x,y, r,g,b);
-            if (i> 50)
-              V.DrawPixel(x, y,255,255,255);
-            else V.DrawPixel(x, y,255,0,0);
+            //V.DrawPixel(x, y, (i*1.5)-i, (i*1.5)-i, (i*1.5)-i);
+            V.DrawPixel(x, y, i, i, i);
         }
     }
 }
+
+void subtrai(AVIClass V)
+{
+
+    int x,y;
+    int i, j;
+    double intensity = 1.3;
+    unsigned char r,g,b;
+
+    for(x=0;x<V.SizeX();x++)
+    {
+        for(y=0;y<V.SizeY();y++)
+        {
+            //i = V.GetPointIntensity(x,y);
+            V.ReadPixel(x, y, r ,g, b);
+            V.DrawPixel(x, y, r * intensity - r, g * intensity - g, b * intensity - b);
+        }
+    }
+}
+
+void pintaBranco(AVIClass V)
+{
+
+    int x,y;
+    int i, j;
+    double intensity = 1.3;
+    unsigned char r,g,b;
+
+    for(x=0;x<V.SizeX();x++)
+    {
+        for(y=0;y<V.SizeY();y++)
+        {
+            i = V.GetPointIntensity(x,y);
+            if(i > 8){
+                V.DrawPixel(x, y, 0 ,0, 0);
+            }else{
+                V.DrawPixel(x, y, 255 , 255, 255);
+            }
+        }
+    }
+}
+
+void medianaBrancos(AVIClass V)
+{
+    int mediana;
+    int cont;
+    unsigned char matriz[25];
+
+    for(int y = 0; y < V.SizeY(); y++){
+        for(int x = 0; x < V.SizeX(); x++){
+            cont = 0;
+            if(V.GetPointIntensity(x,y) == 255){
+                for(int i = 0; i<5; i++){
+                    for(int j = 0; j<5; j++){
+                        matriz[cont] = (unsigned char)V.GetPointIntensity(x+i,y+j);
+                        cont++;
+                    }
+                }
+                OrdenaVetor(matriz);
+                if(matriz[12] == 255){
+                    //cout << "AEHOOOOOOOOOOOOOOOOOOO" << endl;
+                }
+            }
+        }
+    }
+}
+
 // **********************************************************************
 //  void CalculaNivelDeZoom(float &ZoomH, float &ZoomV)
 //
@@ -169,7 +270,6 @@ void CalculaNivelDeZoom(float &ZoomH, float &ZoomV)
 int frame = 1;
 void display( void )
 {
-
     int loadFrameOK;
     float ZoomH, ZoomV;
 
@@ -183,6 +283,7 @@ void display( void )
 	glLoadIdentity();
 
     loadFrameOK = Video.loadImageFrame(frame);
+
     // avança o nro do frame
 
     frame ++;
@@ -204,20 +305,23 @@ void display( void )
        CalculaNivelDeZoom(ZoomH, ZoomV);
        Video.SetZoomH(ZoomH);
        Video.SetZoomV(ZoomV);
-       Mediana();
-       aplicaFiltro(Video);
        if (cinza)
        {
           ConverteCinza(Video);
+          //RemoveIguais(lastFrame);
+          //subtrai(Video);
+          //pintaBranco(Video);
+          //medianaBrancos(Video);
        }
        Video.Display();
+       atualizaAnterior();
     }
     else cout << "Erro..." << endl;
-
     glutSwapBuffers();
     if(watchAll == true){
         display();
     }
+
 }
 
 

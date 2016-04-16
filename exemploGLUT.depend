@@ -519,3 +519,81 @@
 	"ImageClassNew3.h"
 	"BmpLib0.h"
 
+1460826354 source:c:\users\joao fanti\desktop\rastreamentodepupilas\aviclass.cpp
+	<iostream>
+	"AVIClass.h"
+
+1460826354 c:\users\joao fanti\desktop\rastreamentodepupilas\aviclass.h
+	<GL\gl.h>
+	<GL\glut.h>
+	"IM/include/im.h"
+	"IM/include/im_util.h"
+	"IM/include/im_format_avi.h"
+	"IM/include/im_format_wmv.h"
+	"IM/include/im_convert.h"
+	"ImageClassNew3.h"
+
+1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\gl\glut.h
+	"freeglut.h"
+
+1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\gl\freeglut.h
+	"freeglut_std.h"
+	"freeglut_ext.h"
+
+1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\gl\freeglut_std.h
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\gl\freeglut_ext.h
+
+1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im.h
+	"old_im.h"
+
+1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\old_im.h
+
+1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im_util.h
+
+1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im_format_avi.h
+
+1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im_format_wmv.h
+
+1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im_convert.h
+	"im_image.h"
+
+1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im_image.h
+
+1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\imageclassnew3.h
+	<GL\gl.h>
+
+1460836231 source:c:\users\joao fanti\desktop\rastreamentodepupilas\avitest-three.cpp
+	<cstdlib>
+	<iostream>
+	"AVIClass.h"
+
+1460826354 source:c:\users\joao fanti\desktop\rastreamentodepupilas\bmplib0.cpp
+	<stdio.h>
+	<malloc.h>
+	"BmpLib0.h"
+
+1460826354 c:\users\joao fanti\desktop\rastreamentodepupilas\bmplib0.h
+
+1460826355 source:c:\users\joao fanti\desktop\rastreamentodepupilas\cameraclass.cpp
+	<iostream>
+	"CameraClass.h"
+
+1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\cameraclass.h
+	"im_capture.h"
+	"ImageClassNew3.h"
+
+1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\im_capture.h
+
+1460826355 source:c:\users\joao fanti\desktop\rastreamentodepupilas\imageclassnew3.cpp
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<math.h>
+	<GL\gl.h>
+	"ImageClassNew3.h"
+	"BmpLib0.h"
+
