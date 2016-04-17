@@ -597,3 +597,90 @@
 	"ImageClassNew3.h"
 	"BmpLib0.h"
 
+1460925495 source:e:\documentos\pucrs\cgii\rastreamentodepupilas\aviclass.cpp
+	<iostream>
+	"AVIClass.h"
+
+1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\aviclass.h
+	<GL\gl.h>
+	<GL\glut.h>
+	"IM/include/im.h"
+	"IM/include/im_util.h"
+	"IM/include/im_format_avi.h"
+	"IM/include/im_format_wmv.h"
+	"IM/include/im_convert.h"
+	"ImageClassNew3.h"
+
+1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\include\gl\glut.h
+	"freeglut.h"
+
+1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\include\gl\freeglut.h
+	"freeglut_std.h"
+	"freeglut_ext.h"
+
+1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\include\gl\freeglut_std.h
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\include\gl\freeglut_ext.h
+
+1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\include\im\include\im.h
+	"old_im.h"
+
+1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\include\im\include\old_im.h
+
+1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\include\im\include\im_util.h
+
+1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\include\im\include\im_format_avi.h
+
+1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\include\im\include\im_format_wmv.h
+
+1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\include\im\include\im_convert.h
+	"im_image.h"
+
+1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\include\im\include\im_image.h
+
+1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\imageclassnew3.h
+	<GL\gl.h>
+
+1460930974 source:e:\documentos\pucrs\cgii\rastreamentodepupilas\avitest-three.cpp
+	<cstdlib>
+	<iostream>
+	"AVIClass.h"
+	"AplicadorDeFiltros.h"
+
+1460925495 source:e:\documentos\pucrs\cgii\rastreamentodepupilas\bmplib0.cpp
+	<stdio.h>
+	<malloc.h>
+	"BmpLib0.h"
+
+1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\bmplib0.h
+
+1460925495 source:e:\documentos\pucrs\cgii\rastreamentodepupilas\cameraclass.cpp
+	<iostream>
+	"CameraClass.h"
+
+1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\cameraclass.h
+	"im_capture.h"
+	"ImageClassNew3.h"
+
+1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\im_capture.h
+
+1460925495 source:e:\documentos\pucrs\cgii\rastreamentodepupilas\imageclassnew3.cpp
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<math.h>
+	<GL\gl.h>
+	"ImageClassNew3.h"
+	"BmpLib0.h"
+
+1460931925 e:\documentos\pucrs\cgii\rastreamentodepupilas\include\aplicadordefiltros.h
+
+1460932163 source:e:\documentos\pucrs\cgii\rastreamentodepupilas\src\aplicadordefiltros.cpp
+	<cstdlib>
+	<iostream>
+	"..\AVIClass.h"
+	"AplicadorDeFiltros.h"
+
