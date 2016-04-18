@@ -1,11 +1,18 @@
 #include <cstdlib>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 #include "..\AVIClass.h"
 #include "AplicadorDeFiltros.h"
 
+int posicaoDoVetor = 0;
+vector<int> vetor1X;
+vector<int> vetor1Y;
+vector<int> vetor2X;
+vector<int> vetor2Y;
+int posicao;
 
 AplicadorDeFiltros::AplicadorDeFiltros()
 {
@@ -49,14 +56,13 @@ void AplicadorDeFiltros::OrdenaVetor(unsigned char window[])
     }
 }
 
-
-void AplicadorDeFiltros::Mediana()
+void AplicadorDeFiltros::Mediana(int minX, int maxX, int minY, int maxY)
 {
     int cont;
     unsigned char r[9], g[9], b[9];
 
-    for(int y = 0; y < Video.SizeY(); y++){
-        for(int x = 0; x < Video.SizeX(); x++){
+    for(int y = minY; y < maxY; y++){
+        for(int x = minX; x < maxX; x++){
 
             cont = 0;
 
@@ -101,7 +107,6 @@ void AplicadorDeFiltros::PintaConjuntoDePontos(int x[], int y[], unsigned char r
         Video.DrawPixel(x[i], y[i], r, g, b);
 }
 
-
 void AplicadorDeFiltros::PintaCirculos(int tamanhoDaMatriz)
 {
     unsigned char r, g, b;
@@ -118,7 +123,7 @@ void AplicadorDeFiltros::PintaCirculos(int tamanhoDaMatriz)
            //Se o ponto for vermelho, pesquisa os vizinhos
             if (r == 255)
             {
-                int posicao = 0;
+                int posicaoDoVetor = 0;
 
                 for (int j = 0; j < tamanhoDaMatriz; j++)
                 {
@@ -131,9 +136,9 @@ void AplicadorDeFiltros::PintaCirculos(int tamanhoDaMatriz)
 
                         if (r == 255)
                         {
-                            vetorDeX[posicao] = xVizinho;
-                            vetorDeY[posicao] = yVizinho;
-                            posicao++;
+                            vetorDeX[posicaoDoVetor] = xVizinho;
+                            vetorDeY[posicaoDoVetor] = yVizinho;
+                            posicaoDoVetor++;
                         }
                         else
                         {
@@ -150,31 +155,63 @@ void AplicadorDeFiltros::PintaCirculos(int tamanhoDaMatriz)
     }
 }
 
-
 void AplicadorDeFiltros::ProcuraOlhos()
 {
     unsigned char r, g, b;
     int cont;
     int metadeY = (Video.SizeY())/2;
+
+    bool jaPintouOlho1 = false;
+    bool jaPintouOlho2 = false;
+
     for(int y = metadeY; y < Video.SizeY() - 150; y++ )
     {
+        if (jaPintouOlho1 && jaPintouOlho2) break;
+
         for(int x = 0; x < Video.SizeX(); x++ )
         {
-            Pintando(x, y);
+            if (jaPintouOlho1 && jaPintouOlho2) break;
+
+            Video.ReadPixel(x,y,r,g,b);
+            if (r == 255)
+            {
+                Pintando(x, y, jaPintouOlho1);
+                if (jaPintouOlho1) jaPintouOlho2 = true;
+                jaPintouOlho1 = true;
+            }
         }
     }
+
+    Media(vetor1X, vetor1Y);
+    Media(vetor2X, vetor2Y);
 }
 
-void AplicadorDeFiltros::Pintando(int x,int y){
+void AplicadorDeFiltros::Pintando(int x,int y, bool jaPintouOlho1){
 
     unsigned char r,g,b;
     Video.ReadPixel(x,y,r,g,b);
     if(r == 255){
-        Video.DrawPixel(x,y,0,255,0);
-        Pintando(x+1,y);
-        Pintando(x-1,y);
-        Pintando(x,y+1);
-        Pintando(x,y-1);
+
+        Video.DrawPixel(x,y,200,200,200);
+
+        if (!jaPintouOlho1)
+        {
+            vetor1X.push_back(x);
+            vetor1Y.push_back(y);
+        }
+        else
+        {
+            vetor2X.push_back(x);
+            vetor2Y.push_back(y);
+        }
+
+        posicaoDoVetor++;
+
+
+        Pintando(x+1,y, jaPintouOlho1);
+        Pintando(x-1,y, jaPintouOlho1);
+        Pintando(x,y+1, jaPintouOlho1);
+        Pintando(x,y-1, jaPintouOlho1);
     }else{
         return;
     }
@@ -207,4 +244,55 @@ void AplicadorDeFiltros::Realce(int limiar){
             }
         }
     }
+}
+
+void AplicadorDeFiltros::AplicaRetangulo(int minX, int maxX, int minY, int maxY){
+
+    for(int y = 0; y < Video.SizeY(); y++ )
+    {
+        for(int x = 0; x < Video.SizeX(); x++ )
+        {
+            if (!(x > minX && x < maxX) || !(y > minY && y < maxY))
+            {
+                Video.DrawPixel(x, y, 255, 255, 255);
+            }
+        }
+    }
+}
+
+void AplicadorDeFiltros::CriaCruz(int x, int y){
+    Video.DrawPixel(x,y,0,255,0);
+
+    for(int i=-5;i<5;i++){
+        Video.DrawPixel(x+i,y,0,255,0);
+    }
+
+    for(int j=-5;j<5;j++){
+        Video.DrawPixel(x,y+j,0,255,0);
+    }
+
+    Video.DrawPixel(x,y,0,255,0);
+}
+
+void AplicadorDeFiltros::Media(vector<int> vetorx, vector<int> vetory){
+    int x,y;
+    int soma = 0;
+    for(int i =0; i< vetorx.size();i++){
+        soma += vetorx[i];
+    }
+    x = soma / vetorx.size();
+    soma = 0;
+    for(int j =0; j< vetory.size();j++){
+        soma += vetory[j];
+    }
+    y = soma / vetory.size();
+    CriaCruz(x, y);
+}
+
+
+void AplicadorDeFiltros::Zera(){
+    vetor1X.clear();
+    vetor1Y.clear();
+    vetor2X.clear();
+    vetor2Y.clear();
 }

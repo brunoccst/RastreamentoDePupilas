@@ -29,6 +29,10 @@ bool watchAll;
 
 AplicadorDeFiltros filtros;
 AVIClass Video;
+int minX = 100;
+int maxX = 500;
+int minY = 100;
+int maxY = 400;
 
 // **********************************************************************
 //  void init(void)
@@ -42,7 +46,7 @@ cout << "Init..." ;
 
     imFormatRegisterAVI();
     //imFormatRegisterWMV();
-    if(Video.openVideoFile("videos_professor\\3.avi") == 0)
+    if(Video.openVideoFile("videos_professor\\1.avi") == 0)
     //if(Video.openVideoFile("Videos\\video_original.avi") == 0)
     {
        cout << "Problemas na abertura do video" << endl;
@@ -133,11 +137,12 @@ void display( void )
        if (filtrosOn)
        {
           filtros.TonsDeCinza();
-          //filtros.Mediana();
+          filtros.AplicaRetangulo(minX, maxX, minY, maxY);
           //filtros.Realce(20);
           filtros.Limiarizacao(34);
           //filtros.ProcuraBranco();
           //filtros.PintaCirculos(9);
+          filtros.Mediana(minX, maxX, minY, maxY);
           filtros.ProcuraOlhos();
        }
 
@@ -148,6 +153,7 @@ void display( void )
     glutSwapBuffers();
 
     // Se watchAll for 'true', executa o display() até o video acabar
+    filtros.Zera();
     if(watchAll == true){
         display();
     }

@@ -740,13 +740,14 @@
 1461007531 h:\cg2\t1\rastreamentodepupilas\imageclassnew3.h
 	<GL\gl.h>
 
-1461009009 source:h:\cg2\t1\rastreamentodepupilas\avitest-three.cpp
+1461017058 source:h:\cg2\t1\rastreamentodepupilas\avitest-three.cpp
 	<cstdlib>
 	<iostream>
 	"AVIClass.h"
 	"AplicadorDeFiltros.h"
 
-1461008820 h:\cg2\t1\rastreamentodepupilas\include\aplicadordefiltros.h
+1461017374 h:\cg2\t1\rastreamentodepupilas\include\aplicadordefiltros.h
+	<vector>
 
 1461007530 source:h:\cg2\t1\rastreamentodepupilas\bmplib0.cpp
 	<stdio.h>
@@ -774,9 +775,10 @@
 	"ImageClassNew3.h"
 	"BmpLib0.h"
 
-1461009106 source:h:\cg2\t1\rastreamentodepupilas\src\aplicadordefiltros.cpp
+1461017361 source:h:\cg2\t1\rastreamentodepupilas\src\aplicadordefiltros.cpp
 	<cstdlib>
 	<iostream>
+	<vector>
 	"..\AVIClass.h"
 	"AplicadorDeFiltros.h"
 
