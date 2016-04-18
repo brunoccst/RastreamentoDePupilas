@@ -134,6 +134,7 @@ void display( void )
        {
           filtros.TonsDeCinza();
           //filtros.Mediana();
+          //filtros.Realce(20);
           filtros.Limiarizacao(34);
           //filtros.ProcuraBranco();
           //filtros.PintaCirculos(9);

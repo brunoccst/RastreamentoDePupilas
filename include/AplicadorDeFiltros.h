@@ -14,6 +14,7 @@ class AplicadorDeFiltros
         void ProcuraOlhos();
         void Pintando(int x, int y);
         void ProcuraBranco();
+        void Realce(int limiar);
     protected:
 
     private:

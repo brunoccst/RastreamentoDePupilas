@@ -87,6 +87,8 @@ void AplicadorDeFiltros::Limiarizacao(int intensidade)
             if (i < intensidade)
             {
                 Video.DrawPixel(x, y, 255, 0, 0);
+            }else{
+                Video.DrawPixel(x,y,200,200,200);
             }
         }
     }
@@ -172,19 +174,36 @@ void AplicadorDeFiltros::Pintando(int x,int y){
         Pintando(x+1,y);
         Pintando(x-1,y);
         Pintando(x,y+1);
+        Pintando(x,y-1);
     }else{
         return;
     }
 }
 
 void AplicadorDeFiltros::ProcuraBranco(){
-
     for(int y = 0; y < Video.SizeY(); y++ )
     {
         for(int x = 0; x < Video.SizeX(); x++ )
         {
             if(Video.GetPointIntensity(x,y) > 40 && Video.GetPointIntensity(x,y) < 120){
                 Video.DrawPixel(x,y,0,0,255);
+            }
+        }
+    }
+}
+
+void AplicadorDeFiltros::Realce(int limiar){
+    unsigned char r,g,b;
+
+    for(int y = 0; y < Video.SizeY(); y++ )
+    {
+        for(int x = 0; x < Video.SizeX(); x++ )
+        {
+            Video.ReadPixel(x,y,r,g,b);
+            if(r > 150){
+                Video.DrawPixel(x,y,r+limiar,b+limiar,g+limiar);
+            }else{
+                Video.DrawPixel(x,y,r-limiar,b-limiar,g-limiar);
             }
         }
     }

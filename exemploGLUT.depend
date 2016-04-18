@@ -693,3 +693,90 @@
 	"..\AVIClass.h"
 	"AplicadorDeFiltros.h"
 
+1461007530 source:h:\cg2\t1\rastreamentodepupilas\aviclass.cpp
+	<iostream>
+	"AVIClass.h"
+
+1461007530 h:\cg2\t1\rastreamentodepupilas\aviclass.h
+	<GL\gl.h>
+	<GL\glut.h>
+	"IM/include/im.h"
+	"IM/include/im_util.h"
+	"IM/include/im_format_avi.h"
+	"IM/include/im_format_wmv.h"
+	"IM/include/im_convert.h"
+	"ImageClassNew3.h"
+
+1461007531 h:\cg2\t1\rastreamentodepupilas\include\gl\glut.h
+	"freeglut.h"
+
+1461007531 h:\cg2\t1\rastreamentodepupilas\include\gl\freeglut.h
+	"freeglut_std.h"
+	"freeglut_ext.h"
+
+1461007531 h:\cg2\t1\rastreamentodepupilas\include\gl\freeglut_std.h
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1461007531 h:\cg2\t1\rastreamentodepupilas\include\gl\freeglut_ext.h
+
+1461007531 h:\cg2\t1\rastreamentodepupilas\include\im\include\im.h
+	"old_im.h"
+
+1461007532 h:\cg2\t1\rastreamentodepupilas\include\im\include\old_im.h
+
+1461007532 h:\cg2\t1\rastreamentodepupilas\include\im\include\im_util.h
+
+1461007532 h:\cg2\t1\rastreamentodepupilas\include\im\include\im_format_avi.h
+
+1461007532 h:\cg2\t1\rastreamentodepupilas\include\im\include\im_format_wmv.h
+
+1461007531 h:\cg2\t1\rastreamentodepupilas\include\im\include\im_convert.h
+	"im_image.h"
+
+1461007532 h:\cg2\t1\rastreamentodepupilas\include\im\include\im_image.h
+
+1461007531 h:\cg2\t1\rastreamentodepupilas\imageclassnew3.h
+	<GL\gl.h>
+
+1461009009 source:h:\cg2\t1\rastreamentodepupilas\avitest-three.cpp
+	<cstdlib>
+	<iostream>
+	"AVIClass.h"
+	"AplicadorDeFiltros.h"
+
+1461008820 h:\cg2\t1\rastreamentodepupilas\include\aplicadordefiltros.h
+
+1461007530 source:h:\cg2\t1\rastreamentodepupilas\bmplib0.cpp
+	<stdio.h>
+	<malloc.h>
+	"BmpLib0.h"
+
+1461007530 h:\cg2\t1\rastreamentodepupilas\bmplib0.h
+
+1461007530 source:h:\cg2\t1\rastreamentodepupilas\cameraclass.cpp
+	<iostream>
+	"CameraClass.h"
+
+1461007530 h:\cg2\t1\rastreamentodepupilas\cameraclass.h
+	"im_capture.h"
+	"ImageClassNew3.h"
+
+1461007531 h:\cg2\t1\rastreamentodepupilas\im_capture.h
+
+1461007530 source:h:\cg2\t1\rastreamentodepupilas\imageclassnew3.cpp
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<math.h>
+	<GL\gl.h>
+	"ImageClassNew3.h"
+	"BmpLib0.h"
+
+1461009106 source:h:\cg2\t1\rastreamentodepupilas\src\aplicadordefiltros.cpp
+	<cstdlib>
+	<iostream>
+	"..\AVIClass.h"
+	"AplicadorDeFiltros.h"
+
