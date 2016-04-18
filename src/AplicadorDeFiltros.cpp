@@ -147,3 +147,45 @@ void AplicadorDeFiltros::PintaCirculos(int tamanhoDaMatriz)
         }
     }
 }
+
+
+void AplicadorDeFiltros::ProcuraOlhos()
+{
+    unsigned char r, g, b;
+    int cont;
+    int metadeY = (Video.SizeY())/2;
+    for(int y = metadeY; y < Video.SizeY() - 150; y++ )
+    {
+        for(int x = 0; x < Video.SizeX(); x++ )
+        {
+            Pintando(x, y);
+        }
+    }
+}
+
+void AplicadorDeFiltros::Pintando(int x,int y){
+
+    unsigned char r,g,b;
+    Video.ReadPixel(x,y,r,g,b);
+    if(r == 255){
+        Video.DrawPixel(x,y,0,255,0);
+        Pintando(x+1,y);
+        Pintando(x-1,y);
+        Pintando(x,y+1);
+    }else{
+        return;
+    }
+}
+
+void AplicadorDeFiltros::ProcuraBranco(){
+
+    for(int y = 0; y < Video.SizeY(); y++ )
+    {
+        for(int x = 0; x < Video.SizeX(); x++ )
+        {
+            if(Video.GetPointIntensity(x,y) > 40 && Video.GetPointIntensity(x,y) < 120){
+                Video.DrawPixel(x,y,0,0,255);
+            }
+        }
+    }
+}

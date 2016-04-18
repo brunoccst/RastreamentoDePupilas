@@ -11,7 +11,9 @@ class AplicadorDeFiltros
         void Mediana();
         void Limiarizacao(int intensidade);
         void PintaCirculos(int tamanhoDaMatriz);
-
+        void ProcuraOlhos();
+        void Pintando(int x, int y);
+        void ProcuraBranco();
     protected:
 
     private:

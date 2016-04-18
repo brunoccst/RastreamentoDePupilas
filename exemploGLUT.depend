@@ -519,11 +519,11 @@
 	"ImageClassNew3.h"
 	"BmpLib0.h"
 
-1460826354 source:c:\users\joao fanti\desktop\rastreamentodepupilas\aviclass.cpp
+1460946639 source:c:\users\joao fanti\desktop\rastreamentodepupilas\aviclass.cpp
 	<iostream>
 	"AVIClass.h"
 
-1460826354 c:\users\joao fanti\desktop\rastreamentodepupilas\aviclass.h
+1460946639 c:\users\joao fanti\desktop\rastreamentodepupilas\aviclass.h
 	<GL\gl.h>
 	<GL\glut.h>
 	"IM/include/im.h"
@@ -533,62 +533,63 @@
 	"IM/include/im_convert.h"
 	"ImageClassNew3.h"
 
-1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\gl\glut.h
+1460946640 c:\users\joao fanti\desktop\rastreamentodepupilas\include\gl\glut.h
 	"freeglut.h"
 
-1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\gl\freeglut.h
+1460946640 c:\users\joao fanti\desktop\rastreamentodepupilas\include\gl\freeglut.h
 	"freeglut_std.h"
 	"freeglut_ext.h"
 
-1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\gl\freeglut_std.h
+1460946640 c:\users\joao fanti\desktop\rastreamentodepupilas\include\gl\freeglut_std.h
 	<windows.h>
 	<GL/gl.h>
 	<GL/glu.h>
 
-1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\gl\freeglut_ext.h
+1460946640 c:\users\joao fanti\desktop\rastreamentodepupilas\include\gl\freeglut_ext.h
 
-1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im.h
+1460946640 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im.h
 	"old_im.h"
 
-1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\old_im.h
+1460946640 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\old_im.h
 
-1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im_util.h
+1460946640 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im_util.h
 
-1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im_format_avi.h
+1460946640 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im_format_avi.h
 
-1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im_format_wmv.h
+1460946640 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im_format_wmv.h
 
-1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im_convert.h
+1460946640 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im_convert.h
 	"im_image.h"
 
-1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im_image.h
+1460946640 c:\users\joao fanti\desktop\rastreamentodepupilas\include\im\include\im_image.h
 
-1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\imageclassnew3.h
+1460946640 c:\users\joao fanti\desktop\rastreamentodepupilas\imageclassnew3.h
 	<GL\gl.h>
 
-1460836231 source:c:\users\joao fanti\desktop\rastreamentodepupilas\avitest-three.cpp
+1460961206 source:c:\users\joao fanti\desktop\rastreamentodepupilas\avitest-three.cpp
 	<cstdlib>
 	<iostream>
 	"AVIClass.h"
+	"AplicadorDeFiltros.h"
 
-1460826354 source:c:\users\joao fanti\desktop\rastreamentodepupilas\bmplib0.cpp
+1460946639 source:c:\users\joao fanti\desktop\rastreamentodepupilas\bmplib0.cpp
 	<stdio.h>
 	<malloc.h>
 	"BmpLib0.h"
 
-1460826354 c:\users\joao fanti\desktop\rastreamentodepupilas\bmplib0.h
+1460946639 c:\users\joao fanti\desktop\rastreamentodepupilas\bmplib0.h
 
-1460826355 source:c:\users\joao fanti\desktop\rastreamentodepupilas\cameraclass.cpp
+1460946639 source:c:\users\joao fanti\desktop\rastreamentodepupilas\cameraclass.cpp
 	<iostream>
 	"CameraClass.h"
 
-1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\cameraclass.h
+1460946639 c:\users\joao fanti\desktop\rastreamentodepupilas\cameraclass.h
 	"im_capture.h"
 	"ImageClassNew3.h"
 
-1460826355 c:\users\joao fanti\desktop\rastreamentodepupilas\im_capture.h
+1460946640 c:\users\joao fanti\desktop\rastreamentodepupilas\im_capture.h
 
-1460826355 source:c:\users\joao fanti\desktop\rastreamentodepupilas\imageclassnew3.cpp
+1460946639 source:c:\users\joao fanti\desktop\rastreamentodepupilas\imageclassnew3.cpp
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -679,6 +680,14 @@
 1460931925 e:\documentos\pucrs\cgii\rastreamentodepupilas\include\aplicadordefiltros.h
 
 1460932163 source:e:\documentos\pucrs\cgii\rastreamentodepupilas\src\aplicadordefiltros.cpp
+	<cstdlib>
+	<iostream>
+	"..\AVIClass.h"
+	"AplicadorDeFiltros.h"
+
+1460960123 c:\users\joao fanti\desktop\rastreamentodepupilas\include\aplicadordefiltros.h
+
+1460961034 source:c:\users\joao fanti\desktop\rastreamentodepupilas\src\aplicadordefiltros.cpp
 	<cstdlib>
 	<iostream>
 	"..\AVIClass.h"

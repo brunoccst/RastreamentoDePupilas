@@ -42,7 +42,7 @@ cout << "Init..." ;
 
     imFormatRegisterAVI();
     //imFormatRegisterWMV();
-    if(Video.openVideoFile("videos_professor\\1.avi") == 0)
+    if(Video.openVideoFile("videos_professor\\3.avi") == 0)
     //if(Video.openVideoFile("Videos\\video_original.avi") == 0)
     {
        cout << "Problemas na abertura do video" << endl;
@@ -133,9 +133,11 @@ void display( void )
        if (filtrosOn)
        {
           filtros.TonsDeCinza();
-          filtros.Mediana();
-          filtros.Limiarizacao(33);
-          filtros.PintaCirculos(9);
+          //filtros.Mediana();
+          filtros.Limiarizacao(34);
+          //filtros.ProcuraBranco();
+          //filtros.PintaCirculos(9);
+          filtros.ProcuraOlhos();
        }
 
        // Apresenta o video
