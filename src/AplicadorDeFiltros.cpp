@@ -157,6 +157,8 @@ void AplicadorDeFiltros::PintaCirculos(int tamanhoDaMatriz)
 
 void AplicadorDeFiltros::ProcuraOlhos()
 {
+    int posicoes[4];
+    int *dupla[2];
     unsigned char r, g, b;
     int cont;
     int metadeY = (Video.SizeY())/2;
@@ -182,8 +184,8 @@ void AplicadorDeFiltros::ProcuraOlhos()
         }
     }
 
-    Media(vetor1X, vetor1Y);
-    Media(vetor2X, vetor2Y);
+    Media(vetor1X, vetor1Y, 1);
+    Media(vetor2X, vetor2Y, 2);
 }
 
 void AplicadorDeFiltros::Pintando(int x,int y, bool jaPintouOlho1){
@@ -274,7 +276,8 @@ void AplicadorDeFiltros::CriaCruz(int x, int y){
     Video.DrawPixel(x,y,0,255,0);
 }
 
-void AplicadorDeFiltros::Media(vector<int> vetorx, vector<int> vetory){
+void AplicadorDeFiltros::Media(vector<int> vetorx, vector<int> vetory, int vetor){
+    int dupla[2];
     int x,y;
     int soma = 0;
     for(int i =0; i< vetorx.size();i++){
@@ -286,7 +289,13 @@ void AplicadorDeFiltros::Media(vector<int> vetorx, vector<int> vetory){
         soma += vetory[j];
     }
     y = soma / vetory.size();
-    CriaCruz(x, y);
+    if(vetor == 1){
+        pos1X = x;
+        pos1Y = y;
+    }else{
+        pos2X = x;
+        pos2Y = y;
+    }
 }
 
 

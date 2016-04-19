@@ -28,7 +28,7 @@ int filtrosOn = false;
 bool watchAll;
 
 AplicadorDeFiltros filtros;
-AVIClass Video;
+AVIClass Video, Video2;
 int minX = 100;
 int maxX = 500;
 int minY = 100;
@@ -45,6 +45,7 @@ cout << "Init..." ;
     glClearColor(0.0f, 0.0f, 1.0f, 1.0f); // Fundo de tela preto
 
     imFormatRegisterAVI();
+    Video2.openVideoFile("videos_professor\\1.avi");
     //imFormatRegisterWMV();
     if(Video.openVideoFile("videos_professor\\1.avi") == 0)
     //if(Video.openVideoFile("Videos\\video_original.avi") == 0)
@@ -98,6 +99,7 @@ void CalculaNivelDeZoom(float &ZoomH, float &ZoomV)
 int frame = 1;
 void display( void )
 {
+    unsigned char r,g,b;
     int loadFrameOK;
     float ZoomH, ZoomV;
 
@@ -111,6 +113,7 @@ void display( void )
 	glLoadIdentity();
 
     loadFrameOK = Video.loadImageFrame(frame);
+    Video2.loadImageFrame(frame);
 
     // avança o nro do frame
 
@@ -127,23 +130,32 @@ void display( void )
     if (loadFrameOK)
     {
        Video.SetPos(-10,-10);
+       Video2.SetPos(-10,-10);
 
        // Acerta o zoom da imagem para que ocupe toda a janela
        CalculaNivelDeZoom(ZoomH, ZoomV);
        Video.SetZoomH(ZoomH);
+       Video2.SetZoomH(ZoomH);
        Video.SetZoomV(ZoomV);
+       Video2.SetZoomV(ZoomV);
 
        // Executa filtros
        if (filtrosOn)
        {
           filtros.TonsDeCinza();
           filtros.AplicaRetangulo(minX, maxX, minY, maxY);
-          //filtros.Realce(20);
           filtros.Limiarizacao(34);
-          //filtros.ProcuraBranco();
-          //filtros.PintaCirculos(9);
           filtros.Mediana(minX, maxX, minY, maxY);
           filtros.ProcuraOlhos();
+          for(int y = 0; y < Video.SizeY(); y++){
+                for(int x = 0; x < Video.SizeX(); x++){
+                    Video2.ReadPixel(x,y,r,g,b);
+                    Video.DrawPixel(x,y,r,g,b);
+                }
+           }
+           filtros.CriaCruz(filtros.pos1X, filtros.pos1Y);
+           filtros.CriaCruz(filtros.pos2X, filtros.pos2Y);
+          //cout << filtros.ProcuraOlhos()[1][1] << endl;
        }
 
        // Apresenta o video

@@ -17,8 +17,12 @@ class AplicadorDeFiltros
         void Realce(int limiar);
         void AplicaRetangulo(int minX, int maxX, int minY, int maxY);
         void CriaCruz(int x, int y);
-        void Media(vector<int> vetorx, vector<int> vetory);
+        void Media(vector<int> vetorx, vector<int> vetory, int vetor);
         void Zera();
+        int pos1X;
+        int pos1Y;
+        int pos2X;
+        int pos2Y;
     protected:
 
     private:
