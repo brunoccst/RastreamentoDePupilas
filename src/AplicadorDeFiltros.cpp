@@ -119,23 +119,22 @@ void AplicadorDeFiltros::BaldeDeTinta(AVIClass* video, int x, int y, unsigned ch
     BaldeDeTinta(video, x, y, originalR, originalG, originalB, r, g, b);
 }
 
+//TODO: Faz programa parar de funcionar quando sao muitos pontos a serem pintados.
 void AplicadorDeFiltros::BaldeDeTinta(AVIClass* video, int x, int y, unsigned char originalR, unsigned char originalG, unsigned char originalB, unsigned char r, unsigned char g, unsigned char b)
 {
     unsigned char rAtual, gAtual, bAtual;
     video->ReadPixel(x, y, rAtual, gAtual, bAtual);
 
-    if(rAtual == originalR && gAtual == originalG && bAtual == originalB)
+    bool igualAoOriginal = (rAtual == originalR) && (gAtual == originalG) && (bAtual == originalB);
+    bool diferenteDoDesejado = (rAtual != r || gAtual != g || bAtual != b);
+
+    if (igualAoOriginal && diferenteDoDesejado)
     {
         video->DrawPixel(x, y, r, g, b);
-
-        BaldeDeTinta(video, x+1, y, originalR, originalG, originalB, r, g, b);
-        BaldeDeTinta(video, x-1, y, originalR, originalG, originalB, r, g, b);
-        BaldeDeTinta(video, x, y+1, originalR, originalG, originalB, r, g, b);
-        BaldeDeTinta(video, x, y-1, originalR, originalG, originalB, r, g, b);
-    }
-    else
-    {
-        return;
+        if (x + 1 > 0 && x + 1 < video->SizeX()) BaldeDeTinta(video, x+1, y, originalR, originalG, originalB, r, g, b);
+        if (x - 1 > 0 && x - 1 < video->SizeX()) BaldeDeTinta(video, x-1, y, originalR, originalG, originalB, r, g, b);
+        if (y + 1 > 0 && y + 1 < video->SizeY()) BaldeDeTinta(video, x, y+1, originalR, originalG, originalB, r, g, b);
+        if (y - 1 > 0 && y - 1 < video->SizeY()) BaldeDeTinta(video, x, y-1, originalR, originalG, originalB, r, g, b);
     }
 }
 

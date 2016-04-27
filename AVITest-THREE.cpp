@@ -144,6 +144,7 @@ void display( void )
        {
           filtros.TonsDeCinza(&Video);
           filtros.Limiarizacao(&Video, 34, 255, 0, 0, 255, 255, 255);
+          //filtros.BaldeDeTinta(&Video, 10, 10, 0, 255, 0);
        }
 
        // Apresenta o video
