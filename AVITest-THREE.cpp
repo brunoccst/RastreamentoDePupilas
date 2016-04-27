@@ -142,20 +142,8 @@ void display( void )
        // Executa filtros
        if (filtrosOn)
        {
-          filtros.TonsDeCinza();
-          filtros.AplicaRetangulo(minX, maxX, minY, maxY);
-          filtros.Limiarizacao(34);
-          filtros.Mediana(minX, maxX, minY, maxY);
-          filtros.ProcuraOlhos();
-          for(int y = 0; y < Video.SizeY(); y++){
-                for(int x = 0; x < Video.SizeX(); x++){
-                    Video2.ReadPixel(x,y,r,g,b);
-                    Video.DrawPixel(x,y,r,g,b);
-                }
-           }
-           filtros.CriaCruz(filtros.pos1X, filtros.pos1Y);
-           filtros.CriaCruz(filtros.pos2X, filtros.pos2Y);
-          //cout << filtros.ProcuraOlhos()[1][1] << endl;
+          filtros.TonsDeCinza(&Video);
+          filtros.Limiarizacao(&Video, 34, 255, 0, 0, 255, 255, 255);
        }
 
        // Apresenta o video
@@ -165,7 +153,6 @@ void display( void )
     glutSwapBuffers();
 
     // Se watchAll for 'true', executa o display() até o video acabar
-    filtros.Zera();
     if(watchAll == true){
         display();
     }
@@ -227,7 +214,7 @@ int main ( int argc, char** argv )
 {
     init ();
 
-    filtros = AplicadorDeFiltros(Video);
+    filtros = AplicadorDeFiltros();
 
     glutInit            ( &argc, argv );
     glutInitDisplayMode (GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGB );

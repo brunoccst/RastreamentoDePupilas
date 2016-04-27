@@ -645,7 +645,7 @@
 1460925495 e:\documentos\pucrs\cgii\rastreamentodepupilas\imageclassnew3.h
 	<GL\gl.h>
 
-1460930974 source:e:\documentos\pucrs\cgii\rastreamentodepupilas\avitest-three.cpp
+1461721772 source:e:\documentos\pucrs\cgii\rastreamentodepupilas\avitest-three.cpp
 	<cstdlib>
 	<iostream>
 	"AVIClass.h"
@@ -677,11 +677,13 @@
 	"ImageClassNew3.h"
 	"BmpLib0.h"
 
-1460931925 e:\documentos\pucrs\cgii\rastreamentodepupilas\include\aplicadordefiltros.h
+1461722813 e:\documentos\pucrs\cgii\rastreamentodepupilas\include\aplicadordefiltros.h
+	<vector>
 
-1460932163 source:e:\documentos\pucrs\cgii\rastreamentodepupilas\src\aplicadordefiltros.cpp
+1461723157 source:e:\documentos\pucrs\cgii\rastreamentodepupilas\src\aplicadordefiltros.cpp
 	<cstdlib>
 	<iostream>
+	<vector>
 	"..\AVIClass.h"
 	"AplicadorDeFiltros.h"
 

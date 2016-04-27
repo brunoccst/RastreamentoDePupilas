@@ -6,33 +6,19 @@ class AplicadorDeFiltros
 {
     public:
         AplicadorDeFiltros();
-        AplicadorDeFiltros(AVIClass video);
-        void TonsDeCinza();
-        void Mediana(int minX, int maxX, int minY, int maxY);
-        void Limiarizacao(int intensidade);
-        void PintaCirculos(int tamanhoDaMatriz);
-        void ProcuraOlhos();
-        void Pintando(int x, int y, bool jaPintouOlho1);
-        void ProcuraBranco();
-        void Realce(int limiar);
-        void AplicaRetangulo(int minX, int maxX, int minY, int maxY);
-        void CriaCruz(int x, int y);
-        void Media(vector<int> vetorx, vector<int> vetory, int vetor);
-        void Zera();
-        int pos1X;
-        int pos1Y;
-        int pos2X;
-        int pos2Y;
+        void TonsDeCinza(AVIClass* video);
+        void TonsDeCinza(AVIClass* video, int minX, int maxX, int minY, int maxY);
+        void Media(AVIClass* video, double* mediaX, double* mediaY);
+        void Media(AVIClass* video, double* mediaX, double* mediaY, int minX, int maxX, int minY, int maxY);
+        void Mediana(AVIClass* video);
+        void Mediana(AVIClass* video, int minX, int maxX, int minY, int maxY);
+        void Limiarizacao(AVIClass* video, int intensidade, unsigned char r1, unsigned char g1, unsigned char b1, unsigned char r2, unsigned char g2, unsigned char b2);
+        void Limiarizacao(AVIClass* video, int intensidade, unsigned char r1, unsigned char g1, unsigned char b1, unsigned char r2, unsigned char g2, unsigned char b2, int minX, int maxX, int minY, int maxY);
+        void BaldeDeTinta(AVIClass* video, int x, int y, unsigned char r, unsigned char g, unsigned char b);
     protected:
-
     private:
-        int olho1X[200];
-        int olho1Y[200];
-        int olho2X[200];
-        int olho2Y[200];
-        AVIClass Video;
         void OrdenaVetor(unsigned char window[]);
-        void PintaConjuntoDePontos(int x[], int y[], unsigned char r, unsigned char g, unsigned char b);
+        void BaldeDeTinta(AVIClass* video, int x, int y, unsigned char originalR, unsigned char originalG, unsigned char originalB, unsigned char r, unsigned char g, unsigned char b);
 };
 
 #endif // APLICADORDEFILTROS_H
